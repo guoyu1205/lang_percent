@@ -1,0 +1,35 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: pq
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pq?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 041205gy
+  redis:
+    host: localhost
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 1
+        time-between-eviction-runs: 10s
+    password:
+  jackson:
+    default-property-inclusion: non_null # JSON处理时忽略非空字段
+mybatis-plus:
+  type-aliases-package: com.pq.entity # 别名扫描包
+  configuration:
+    map-underscore-to-camel-case: false
+logging:
+  level:
+    com.pq: debug
+# 豆包AI配置
+doubao:
+  api:
+    key: 45916371-4be9-4c96-85ef-36e37b23c04a  # 直接设置，不使用环境变量
+    url: https://ark.cn-beijing.volces.com/api/v3/chat/completions
+  model: doubao-seed-1-6-250615
